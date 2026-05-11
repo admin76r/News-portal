@@ -1,7 +1,6 @@
 baseURL = "https://example.com/"
 title = "Apnar News Portal"
 languageCode = "bn"
-theme = ""
 paginate = 10
 enableRobotsTXT = true
 DefaultContentLanguage = "bn"
