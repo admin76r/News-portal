@@ -1,0 +1,28 @@
+{{ define "main" }}
+  <section>
+    <h2 class="text-xl font-semibold mb-4">Featured</h2>
+    <div class="space-y-6">
+      {{ $featured := where .Site.RegularPages "Params.featured" true | first 3 }}
+      {{ range $featured }}
+        <article class="p-4 bg-white rounded shadow">
+          <a href="{{ .RelPermalink }}" class="text-lg font-bold">{{ .Title }}</a>
+          <p class="text-sm text-gray-500">{{ .Date.Format "2006-01-02" }} • {{ .Params.author }}</p>
+          <p class="mt-2 text-gray-700">{{ .Summary }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="text-xl font-semibold mb-4">Latest</h2>
+    <div class="space-y-4">
+      {{ range .Site.RegularPages.ByDate.Reverse }}
+        <article class="p-4 bg-white rounded shadow">
+          <a href="{{ .RelPermalink }}" class="text-lg font-semibold">{{ .Title }}</a>
+          <div class="text-sm text-gray-500">{{ .Date.Format "2006-01-02" }} • {{ with .Params.categories }}{{ index . 0 }}{{ end }}</div>
+          <p class="mt-2 text-gray-700">{{ .Summary }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="bg-white p-6 rounded shadow">
+  <h1 class="text-2xl font-bold mb-2">{{ .Title }}</h1>
+  <div class="text-sm text-gray-500 mb-4">{{ .Date.Format "2006-01-02" }} • {{ .Params.author }}</div>
+
+  {{ with .Params.featured_image }}
+    <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-auto rounded mb-4" />
+  {{ else }}
+    <img src="/images/placeholder.svg" alt="placeholder" class="w-full h-auto rounded mb-4" />
+  {{ end }}
+
+  <div class="prose max-w-none">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.tags }}
+  <div class="mt-6">
+    <strong>Tags:</strong>
+    {{ range . }}
+      <span class="inline-block bg-gray-200 text-sm px-2 py-1 rounded mr-2">{{ . }}</span>
+    {{ end }}
+  </div>
+  {{ end }}
+</article>
+{{ end }}

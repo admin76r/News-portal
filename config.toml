@@ -1,0 +1,18 @@
+baseURL = "https://example.com/"
+title = "Apnar News Portal"
+languageCode = "bn"
+theme = ""
+paginate = 10
+enableRobotsTXT = true
+DefaultContentLanguage = "bn"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  author = "Admin"
+  description = "Local news and updates in Bangla"
